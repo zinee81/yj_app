@@ -76,17 +76,19 @@ function App() {
 
   useEffect(() => {
     if (qrData) {
-      toast.success(`${qrData}`, {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
+      // toast.success(`${qrData}`, {
+      //   position: "top-center",
+      //   autoClose: 5000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      //   theme: "light",
+      //   transition: Bounce,
+      // });
+
+      alert("성공");
 
       // 데이터베이스에서 보내는 작업
       alert(`${qrData} 성공`);
