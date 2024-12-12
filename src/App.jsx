@@ -26,23 +26,22 @@ function App() {
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
         }
-
-        if (permissionGranted === null) {
-          requestCameraPermission();
-        }
-
-        return () => {
-          if (videoStream) {
-            videoStream.getTracks().forEach((track) => {
-              track.stop();
-            });
-          }
-        };
       } catch (error) {
         console.log(error);
       }
     };
-  }, [permissionGranted]);
+    if (permissionGranted === null) {
+      requestCameraPermission();
+    }
+
+    return () => {
+      if (videoStream) {
+        videoStream.getTracks().forEach((track) => {
+          track.stop();
+        });
+      }
+    };
+  }, [permissionGranted, videoStream]);
 
   useEffect(() => {
     if (videoStream) {
