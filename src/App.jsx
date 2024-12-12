@@ -42,7 +42,7 @@ function App() {
         console.log(error);
       }
     };
-  }, [permissionGranted, videoStream]);
+  }, [permissionGranted]);
 
   useEffect(() => {
     if (videoStream) {
