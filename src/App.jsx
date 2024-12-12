@@ -2,6 +2,7 @@ import { IoMdMenu } from "react-icons/io";
 import { MdLogin } from "react-icons/md";
 import { BsFillSignIntersectionFill } from "react-icons/bs";
 import { useEffect, useRef, useState } from "react";
+import { toast, Bounce } from "react-toastify";
 import jsQR from "jsqr";
 
 function App() {
@@ -61,8 +62,35 @@ function App() {
           const imageData = canvasContext.getImageData(0, 0, videoWidth, videoHeight);
 
           const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+          if (code) {
+            setQrData(code.data);
+          }
         }
+
+        requestAnimationFrame(scan);
       };
+
+      requestAnimationFrame(scan);
+    }
+  }, [permissionGranted, videoStream]);
+
+  useEffect(() => {
+    if (qrData) {
+      toast.success(`${qrData}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+
+      // 데이터베이스에서 보내는 작업
+      alert(`${qrData} 성공`);
     }
   }, []);
 
