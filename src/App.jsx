@@ -46,7 +46,7 @@ function App() {
   useEffect(() => {
     if (qrData) {
       toast.success(`${qrData}`, {
-        position: "top-center",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
