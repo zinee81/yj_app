@@ -57,12 +57,10 @@ function App() {
       //   transition: Bounce,
       // });
 
-      alert("성공");
-
       // 데이터베이스에서 보내는 작업
       alert(`${qrData} 성공`);
     }
-  }, []);
+  }, [qrData]);
 
   useEffect(() => {
     if (videoStream) {
